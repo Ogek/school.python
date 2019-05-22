@@ -22,6 +22,9 @@ if __name__ == '__main__':
     except OSError:
         print('The input file cannot be open')
         exit(-1)
+    except UnicodeDecodeError:
+        print('The input file cannot be decoded in UTF-8')
+        exit(-1)
     d = count_words(fo.read())
     fo.close()
     for w in sorted(d, key=d.get, reverse=True)[:10]:
